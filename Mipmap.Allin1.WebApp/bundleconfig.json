@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/tanap.min.css",
+    "inputFiles": [
+      "wwwroot/css/tanap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/tanap.min.js",
+    "inputFiles": [
+      "wwwroot/js/tanap.js"
+    ]
+  }
+]

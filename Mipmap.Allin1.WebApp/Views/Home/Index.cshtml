@@ -1,0 +1,288 @@
+﻿@{
+
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>MipMap All Projects</title>
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/dark/main.css">
+
+    <link href="~/css/Allin1.min.css" asp-append-version="true" rel="stylesheet" />
+    <link href="~/css/Allin1.css" asp-append-version="true" rel="stylesheet" />
+
+    <link rel="icon" type="image/png" href="~/favicon.ico">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-outline-tanap me-3 " data-bs-toggle="offcanvas" data-bs-target="#layerOffcanvas" type="button" aria-controls="navbarsExample01">
+                <span class="fas fa-angle-double-right text-light"></span> 
+            </button>
+            <a class="navbar-brand p-0" href="https://www.mipmap-technologies.com" target="_blank">
+
+                <img src="~/images/logo_light.png" alt="Logo" class="img-fluid" style="max-height:32px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-form form-inline ms-lg-4">
+                <div class="search-box" id="searchBox">
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnHome" data-widget="home" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Anasayfa">
+                            <i class="fas fa-home text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Anasayfa</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-item pe-lg-1">
+
+                        <button type="button" id="btnMeasureLine" data-widget="distance" data-button="toolbar" class="btn btn-outline-tanap" data-bs-toggle="tooltip" title="Uzunluk ölçümü">
+                            <i class="fas fa-ruler text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Uzunluk Ölçümü</span>
+                        </button>
+                    </li>
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnMeasurePoly" data-widget="area" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Alan ölçümü">
+                            <i class="fas fa-draw-polygon text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Alan Ölçümü</span>
+                        </button>
+                    </li>
+                    <li class="nav-item pe-lg-1">
+                        <button type="button" id="btnMeasureProfile" data-widget="profile" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Yükseklik profili">
+                            <i class="esri-icon-elevation-profile text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Yükselik Profili</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnDaylight" data-widget="daylight" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Gün ışığı">
+                            <i class="fas fa-sun text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Gün Işığı</span>
+                        </button>
+                    </li>
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnWeather" data-widget="weather" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Hava durumu">
+                            <i class="fas fa-cloud-moon-rain text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Hava Durmu</span>
+                        </button>
+                    </li>
+                    
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnRoute" data-widget="route" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Rota">
+                            <i class="fas fa-route text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Rota</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnBaseMaps" data-widget="basemaps" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Altlıklar">
+                            <i class="fab fa-windows text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Altlıklar</span>
+                        </button>
+                    </li>
+                    <li class="nav-item  pe-lg-1">
+                        <button type="button" id="btnLegend" data-widget="legend" data-button="toolbar" class="btn btn-outline-tanap" data-bs-toggle="tooltip" title="Legend">
+                            <i class="fas fa-bookmark text-light"></i>
+                            <span class="d-inline-block d-lg-none text-light">Legend</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="offcanvas offcanvas-start text-bg-dark offcanvas-transparent" data-bs-backdrop="false" tabindex="-1" id="layerOffcanvas" aria-labelledby="layerOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="layerOffcanvasLabel">Katman Yönetimi</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="accordion" class="myaccordion w-100">
+                <div class="card" style="margin: 0px; padding: 0px;">
+                    <div class="card-header p-0" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="d-flex py-2 px-4 align-items-center justify-content-between btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="heading d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fas fa-layer-group"></span>
+                                    </div>
+                                    <h3 class="mb-0 ms-3"> Ortofotolar</h3>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordion" style="">
+                        <div class="card-body text-bg-dark" style="padding: 0;">
+
+
+                                <div id="timelineWidget" class="esri-widget" style="width:370px; height: 110px; right:9px; bottom: 10px; background: rgb(255, 255, 255); margin: 0px; padding: 20px;  display: none;" >
+                                    <h5 style="text-align:center">2005-2023</h5>
+                                </div>  
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header p-0" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="d-flex py-2 px-4 align-items-center justify-content-between btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <div class="heading d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fal fa-cube"></span>
+
+                                    </div>
+                                    <h3 class="mb-0 ms-3">3B Katmanlar</h3>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion" style="">
+                        <div class="card-body text-bg-dark">
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" checked id="chkPoints" value="Points">
+                                    <label class="form-check-label" for="chkPoints">Önemli Yerler</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input type="checkbox" name="yollar" checked class="form-check-input" id="chkYollar" value="Yollar">
+                                    <label class="form-check-label" for="chkYollar">Yollar</label>
+                                </div>
+                                <input type="range" min="0" id="rngYollar" max="100" value="100" class="form-range" style="width: 100%; " />
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input type="radio" name="3dlayers" class="form-check-input" checked id="chkEditedB" value="Edited Buildings">
+                                    <label class="form-check-label" for="chkEditedB">3B Binalar</label>
+                                </div>
+                                <input type="range" min="0" id="rngEditedB" max="100" value="100" class="form-range" style="width: 100%; " />
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input type="radio" name="3dlayers" class="form-check-input" id="chkExtrudedBuildings" value="Extrude Buildings">
+                                    <label class="form-check-label" for="chkExtrudedBuildings">Kaplanmamış 3B Binalar</label>
+                                </div>
+                                <input type="range" min="0" id="rngExtrudedBuildings" max="100" value="100" class="form-range" style="width: 100%; " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header p-0" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="d-flex py-2 px-4 align-items-center justify-content-between btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <div class="heading d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fas fa-street-view"></span>
+                                    </div>
+                                    <h3 class="mb-0 ms-3"> 360 Panoramik Görünüm</h3>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion" style="">
+                        <div class="card-body text-bg-dark">
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input type="checkbox" name="360" checked class="form-check-input" id="chk360" value="360">
+                                    <label class="form-check-label" for="chk360">360 PanoramiK Görüntü</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-header p-0" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="d-flex py-2 px-4 align-items-center justify-content-between btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <div class="heading d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fas fa-cloud-sun-rain"></span>
+                                    </div>
+                                    <h3 class="mb-0 ms-3">Anlık Hava Durumu </h3>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion" style="">
+                        <div class="card-body text-bg-dark">
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input type="checkbox" name="360" checked class="form-check-input" id="chkhava" value="havadurumu">
+                                    <label class="form-check-label" for="chkhava">Anlık Hava Durumu</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="viewDiv" style="margin: 0;height: 100vh;width: 100%;"></div>
+
+    <div id="weatherBox" class="box weather-box" style="display:none;">
+        <div class="weather-header">Artova</div>
+        <div class="weather-body">
+            <div class="weather-left">
+                <img src="/images/weather/04d.png" class="weather-image" alt="icons8-sun-94">
+            </div>
+            <div class="weather-right">
+                <p class="weather-value">7.03°</p>
+                <p class="weather-description">kapalı</p>
+            </div>
+        </div>
+        <div class="weather-footer">
+            <div class="icon-box">
+                <img src="/images/weather/basinc.png" class="image" alt="icon">
+                <span class="basinc">1014hPA</span>
+            </div>
+            <div class="icon-box">
+                <img src="/images/weather/wind.png" class="image" alt="icon">
+                <span class="ruzgar">1.6m/s</span>
+            </div>
+            <div class="icon-box">
+                <img src="/images/weather/nem.png" class="image" alt="icon">
+                <span class="nem">% 70</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link href="~/lib/panellum/pannellum.css" rel="stylesheet" />
+    <script src="~/lib/panellum/pannellum.js"></script>
+
+    <script type="module" src="~/js/Allin1.js" asp-append-version="true"></script>
+
+</body>
+
+</html>
