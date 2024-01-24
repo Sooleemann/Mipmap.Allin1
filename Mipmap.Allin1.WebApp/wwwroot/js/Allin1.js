@@ -24,12 +24,12 @@ let map, view, initialViewParams, homeCamera, activeWidget, points, points2, hig
 
 init();
 function init() {
-    //{heading: 359.5531957175214, tilt: 0.22374561739948295, lat: 34.99540231651317, lon: 37.52865375179315, z: 7876283.609171612}
-    let lon = 37.52865375179315;
-    let lat = 34.99540231651317;
-    let z = 16876283.609171612;
-    let tilt = 0.22374561739948295;
-    let heading = 359.5531957175214;
+    //{heading: 19.538611536742064, tilt: 42.92394582223785, lat: 1.0235050645444128, lon: 22.663669463254045, z: 2757215.3321732804}
+    let lon = 22.663669463254045;
+    let lat = 1.0235050645444128;
+    let z = 2757215.3321732804;
+    let tilt = 42.92394582223785;
+    let heading = 19.538611536742064;
 
     intl.setLocale("en");
     homeCamera = new Camera({
@@ -86,7 +86,7 @@ function init() {
         }
     };
     view = new SceneView(initialViewParams);
-    //view.watch("camera", updateIndicator);
+    view.watch("camera", updateIndicator);
 
     view.when(() => {
         reactiveUtils.when(
@@ -336,6 +336,7 @@ function AddLayers() {
 
             {
                 value: "building",
+                label: "Projects Related to Buildings",
                 symbol: getUniqueValueSymbol(
                     "images//building.png",
                     "#000000"
@@ -343,6 +344,7 @@ function AddLayers() {
             },
             {
                 value: "dashboard",
+                label: "Projects Related to Dashboard",
                 symbol: getUniqueValueSymbol(
                     "images//dashboard.png",
                     "#000000"
@@ -350,6 +352,7 @@ function AddLayers() {
             },
             {
                 value: "indoor",
+                label: "Projects Related to Indoor",
                 symbol: getUniqueValueSymbol(
                     "images//indoor.png",
                     "#000000"
@@ -357,20 +360,15 @@ function AddLayers() {
             },
             {
                 value: "utility",
+                label: "Projects Related to Utility",
                 symbol: getUniqueValueSymbol(
                     "images//utility.png",
                     "#000000"
                 )
             },
             {
-                value: "mesh",
-                symbol: getUniqueValueSymbol(
-                    "images//building.png",
-                    "#000000"
-                )
-            },
-            {
                 value: "underground",
+                label: "Projects Related to Underground",
                 symbol: getUniqueValueSymbol(
                     "images//underground2.png",
                     "#000000"

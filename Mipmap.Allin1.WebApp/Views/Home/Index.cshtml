@@ -27,9 +27,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
         <div class="container-fluid">
-            <button class="btn btn-outline-tanap me-3 " data-bs-toggle="offcanvas" data-bs-target="#layerOffcanvas" type="button" aria-controls="navbarsExample01">
+@*             <button class="btn btn-outline-tanap me-3 " data-bs-toggle="offcanvas" data-bs-target="#layerOffcanvas" type="button" aria-controls="navbarsExample01">
                 <span class="fas fa-angle-double-right text-light"></span> 
-            </button>
+            </button> *@
             <a class="navbar-brand p-0" href="https://www.mipmap-technologies.com" target="_blank">
 
                 <img src="~/images/logo_light.png" alt="Logo" class="img-fluid" style="max-height:32px;" />
@@ -47,59 +47,59 @@
                     <li class="nav-item  pe-lg-1">
                         <button type="button" id="btnHome" data-widget="home" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Anasayfa">
                             <i class="fas fa-home text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Anasayfa</span>
+                            <span class="d-inline-block d-lg-none text-light">Home</span>
                         </button>
                     </li>
 
                     <li class="nav-item pe-lg-1">
 
-                        <button type="button" id="btnMeasureLine" data-widget="distance" data-button="toolbar" class="btn btn-outline-tanap" data-bs-toggle="tooltip" title="Uzunluk ölçümü">
+                        <button type="button" id="btnMeasureLine" data-widget="distance" data-button="toolbar" class="btn btn-outline-tanap" data-bs-toggle="tooltip" title="Measure Length">
                             <i class="fas fa-ruler text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Uzunluk Ölçümü</span>
+                            <span class="d-inline-block d-lg-none text-light">Measure Length</span>
                         </button>
                     </li>
                     <li class="nav-item  pe-lg-1">
-                        <button type="button" id="btnMeasurePoly" data-widget="area" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Alan ölçümü">
+                        <button type="button" id="btnMeasurePoly" data-widget="area" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Measure Area">
                             <i class="fas fa-draw-polygon text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Alan Ölçümü</span>
+                            <span class="d-inline-block d-lg-none text-light">Measure Area</span>
                         </button>
                     </li>
                     <li class="nav-item pe-lg-1">
-                        <button type="button" id="btnMeasureProfile" data-widget="profile" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Yükseklik profili">
+                        <button type="button" id="btnMeasureProfile" data-widget="profile" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Elevation Profile">
                             <i class="esri-icon-elevation-profile text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Yükselik Profili</span>
+                            <span class="d-inline-block d-lg-none text-light">Elevation Profile</span>
                         </button>
                     </li>
 
                     <li class="nav-item  pe-lg-1">
-                        <button type="button" id="btnDaylight" data-widget="daylight" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Gün ışığı">
+                        <button type="button" id="btnDaylight" data-widget="daylight" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Daylight">
                             <i class="fas fa-sun text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Gün Işığı</span>
+                            <span class="d-inline-block d-lg-none text-light">Daylight</span>
                         </button>
                     </li>
                     <li class="nav-item  pe-lg-1">
-                        <button type="button" id="btnWeather" data-widget="weather" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Hava durumu">
+                        <button type="button" id="btnWeather" data-widget="weather" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Weather">
                             <i class="fas fa-cloud-moon-rain text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Hava Durmu</span>
+                            <span class="d-inline-block d-lg-none text-light">Weather</span>
                         </button>
                     </li>
                     
                     <li class="nav-item  pe-lg-1">
-                        <button type="button" id="btnRoute" data-widget="route" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Rota">
+                        <button type="button" id="btnRoute" data-widget="route" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Route">
                             <i class="fas fa-route text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Rota</span>
+                            <span class="d-inline-block d-lg-none text-light">Route</span>
                         </button>
                     </li>
 
                     <li class="nav-item  pe-lg-1">
-                        <button type="button" id="btnBaseMaps" data-widget="basemaps" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Altlıklar">
+                        <button type="button" id="btnBaseMaps" data-widget="basemaps" data-button="toolbar" class="btn btn-outline-tanap " data-bs-toggle="tooltip" title="Basemaps">
                             <i class="fab fa-windows text-light"></i>
-                            <span class="d-inline-block d-lg-none text-light">Altlıklar</span>
+                            <span class="d-inline-block d-lg-none text-light">Basemaps</span>
                         </button>
                     </li>
                     <li class="nav-item  pe-lg-1">
                         <button type="button" id="btnLegend" data-widget="legend" data-button="toolbar" class="btn btn-outline-tanap" data-bs-toggle="tooltip" title="Legend">
-                            <i class="fas fa-bookmark text-light"></i>
+                            <i class="fas fa-list text-light"></i>
                             <span class="d-inline-block d-lg-none text-light">Legend</span>
                         </button>
                     </li>
@@ -111,7 +111,7 @@
     </nav>
 
 
-    <div class="offcanvas offcanvas-start text-bg-dark offcanvas-transparent" data-bs-backdrop="false" tabindex="-1" id="layerOffcanvas" aria-labelledby="layerOffcanvasLabel">
+    @* <div class="offcanvas offcanvas-start text-bg-dark offcanvas-transparent" data-bs-backdrop="false" tabindex="-1" id="layerOffcanvas" aria-labelledby="layerOffcanvasLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="layerOffcanvasLabel">Katman Yönetimi</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -245,7 +245,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> *@
 
     <div id="viewDiv" style="margin: 0;height: 100vh;width: 100%;"></div>
 
