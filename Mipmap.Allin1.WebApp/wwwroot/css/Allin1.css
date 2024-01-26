@@ -136,7 +136,7 @@ body,html {
             position: relative;
             z-index: 0;
             overflow: hidden;
-            background: #df7563;
+            background: #86b1b9;
             color: #fff;
         }
 
@@ -159,6 +159,7 @@ body,html {
         position: relative;
         text-decoration: none;
     }
+
 
     .myaccordion .btn-link:hover,
     .myaccordion .btn-link:focus {
@@ -278,3 +279,6 @@ button[aria-expanded="false"] {
     height: auto;
 }
 /**                           ------------------------------      HAVA DURUMU BOX Bitiþ     -----------------------------------------*/
+#legendWidget {
+    background-color: #212529 !important;
+}

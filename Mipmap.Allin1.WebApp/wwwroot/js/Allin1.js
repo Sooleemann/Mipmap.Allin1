@@ -20,16 +20,15 @@ import Slice from "/lib/@arcgis/core/widgets/Slice.js";
 import Legend from "/lib/@arcgis/core/widgets/Legend.js";
 import Search from "/lib/@arcgis/core/widgets/Search.js";
 
-let map, view, initialViewParams, homeCamera, activeWidget, points, points2, highlights, features, f;
+let map, view, initialViewParams, homeCamera, activeWidget, points;
 
 init();
-function init() {
-    //{heading: 19.538611536742064, tilt: 42.92394582223785, lat: 1.0235050645444128, lon: 22.663669463254045, z: 2757215.3321732804}
-    let lon = 22.663669463254045;
-    let lat = 1.0235050645444128;
-    let z = 2757215.3321732804;
-    let tilt = 42.92394582223785;
-    let heading = 19.538611536742064;
+function init() {//{heading: 15.305206383184679, tilt: 24.706372111039396, lat: 15.177715113787393, lon: 29.517314256175773, z: 4185299.7677175254}
+    let lon = 29.517314256175773;
+    let lat = 15.177715113787393;
+    let z = 4185299.7677175254;
+    let tilt = 24.706372111039396;
+    let heading = 15.305206383184679;
 
     intl.setLocale("en");
     homeCamera = new Camera({
@@ -42,20 +41,6 @@ function init() {
             //spatialReference: { wkid: 4326 }
         },
     });
-
-    //if (window.location.hash !== '') {
-
-    //    var hash = window.location.hash.replace('#map=', '');
-    //    var parts = hash.split('/');
-    //    if (parts.length === 5) {
-
-    //        lat = parseFloat(parts[0]);
-    //        lon = parseFloat(parts[1]);
-    //        z = parseFloat(parts[2]);
-    //        tilt = parseFloat(parts[3]);
-    //        heading = parseFloat(parts[4]);
-    //    }
-    //}
 
     map = new Map({
         basemap: "hybrid",//"dark-gray-vector",
@@ -291,7 +276,7 @@ function AddLayers() {
     //---------------------------------------
 
     var verticalOffset = {
-        screenLength: 100,
+        screenLength: 50,
         maxWorldLength: 16876283,
         minWorldLength: 35
     };
@@ -307,7 +292,7 @@ function AddLayers() {
                     resource: {
                         href: name
                     },
-                    size: 70,
+                    size: 50,
                     outline: {
                         color: "white",
                         size: 2
@@ -335,7 +320,7 @@ function AddLayers() {
         uniqueValueInfos: [
 
             {
-                value: "building",
+                value: "Digital Twin",
                 label: "Projects Related to Buildings",
                 symbol: getUniqueValueSymbol(
                     "images//building.png",
@@ -343,7 +328,7 @@ function AddLayers() {
                 )
             },
             {
-                value: "dashboard",
+                value: "Dashboard",
                 label: "Projects Related to Dashboard",
                 symbol: getUniqueValueSymbol(
                     "images//dashboard.png",
@@ -351,7 +336,7 @@ function AddLayers() {
                 )
             },
             {
-                value: "indoor",
+                value: "Indoor",
                 label: "Projects Related to Indoor",
                 symbol: getUniqueValueSymbol(
                     "images//indoor.png",
@@ -359,7 +344,7 @@ function AddLayers() {
                 )
             },
             {
-                value: "utility",
+                value: "Utility",
                 label: "Projects Related to Utility",
                 symbol: getUniqueValueSymbol(
                     "images//utility.png",
@@ -367,10 +352,34 @@ function AddLayers() {
                 )
             },
             {
-                value: "underground",
+                value: "Underground",
                 label: "Projects Related to Underground",
                 symbol: getUniqueValueSymbol(
                     "images//underground2.png",
+                    "#000000"
+                )
+            },
+            {
+                value: "IoT",
+                label: "Projects Related to IoT",
+                symbol: getUniqueValueSymbol(
+                    "images//iot.png",
+                    "#000000"
+                )
+            },
+            {
+                value: "OIC",
+                label: "Projects Related to Oriented Imagery Catalog",
+                symbol: getUniqueValueSymbol(
+                    "images//OIC3.png",
+                    "#000000"
+                )
+            },
+            {
+                value: "Panoramic",
+                label: "Projects Related to Panoramic View",
+                symbol: getUniqueValueSymbol(
+                    "images//3603.png",
                     "#000000"
                 )
             },
@@ -383,9 +392,6 @@ function AddLayers() {
         renderer: pointsRenderer,
         popupEnabled: true,
         outFields: ["*"],
-        //featureReduction: {
-        //    type: "selection"
-        //},
         labelingInfo: [
             {
                 labelExpressionInfo: {
@@ -411,7 +417,6 @@ function AddLayers() {
             }
         ],
         popupTemplate: {
-            // autocasts as new PopupTemplate()
             title: "Project Information",
             content: [
                 {
@@ -419,111 +424,59 @@ function AddLayers() {
                     fieldInfos: [
                         {
                             fieldName: "Name",
-                            label: "Project Name"
-                        },
-                        {
-                            fieldName: "Area",
-                            label: "Project Area (m2)"
-                        },
-                        {
-                            fieldName: "Total_Building",
-                            label: "Total Buildings in Project"
-                        },
-                        {
-                            fieldName: "Url",
-                            label: "Project Url"
+                            label: "Name"
                         },
                         {
                             fieldName: "type",
-                            label: "Project Type"
+                            label: "Type"
                         },
-
-
+                        {
+                            fieldName: "Area",
+                            label: "Area (m2)"
+                        },
+                        {
+                            fieldName: "Total_Building",
+                            label: "Building Count"
+                        },
+                        {
+                            fieldName: "Url3D",
+                            label: "Url 3D"
+                        },
+                        {
+                            fieldName: "Url2D",
+                            label: "Url 2D"
+                        },
 
                     ]
                 }
-
-
             ]
         },
     });
     map.layers.add(points);
 
-    //points2 = new FeatureLayer({
-    //    title: "All Projects",
-    //    url: "https://arcgis.mipmap.nl/server/rest/services/Hosted/MipMap_Apps_Point/FeatureServer",
-    //    renderer: pointsRenderer2,
-    //    popupEnabled: true,
-    //    outFields: ["*"],
-    //    elevationInfo: {
-    //        // elevation mode that will place points on top of the buildings or other SceneLayer 3D objects
-    //        mode: "relative-to-scene"
-    //    },
-    //    popupTemplate: {
-    //        // autocasts as new PopupTemplate()
-    //        title: "Project Information",
-    //        content: [
-    //            {
-    //                type: "fields",
-    //                fieldInfos: [
-    //                    {
-    //                        fieldName: "Name",
-    //                        label: "Project Name"
-    //                    },
-    //                    {
-    //                        fieldName: "Area",
-    //                        label: "Project Area (m2)"
-    //                    },
-    //                    {
-    //                        fieldName: "Total_Building",
-    //                        label: "Total Buildings in Project"
-    //                    },
-    //                    {
-    //                        fieldName: "Url",
-    //                        label: "Project Url"
-    //                    },
-    //                    {
-    //                        fieldName: "type",
-    //                        label: "Project Type"
-    //                    },
 
-
-
-    //                ]
-    //            }
-
-
-    //        ]
-    //    },
-        
-    //});
-    //map.layers.add(points2);
-
-
-    view.on("click", function (event) {
-        // Tıklanan özellikleri alın
-        highlights?.remove();
-        view.hitTest(event).then(function (response) {
-
-            features = response.results.map(result => result.graphic);
-
-            if (features.length > 0) {
-                f = features[0];
-                var tempurl = f.attributes.url;
-                //window.location.href = tempurl;
-                window.open(tempurl, "_blank");
-
-            }
-        });
+    var legend = new Legend({
+        view: view,
+        container: "legendWidget",
     });
 
-}
 
+}
 
 
 function initUI() {
 
     $('#chkOrtho').on('click', () => { points.visible = $('#chkOrtho').is(":checked"); });
+
+    $('#chkAll').on('click', () => { points.definitionExpression = null; });
+    $('#chkDT').on('click', () => { points.definitionExpression = "type = 'Digital Twin'"; });
+    $('#chkDash').on('click', () => { points.definitionExpression = "type = 'Dashboard'"; });
+    $('#chkindoor').on('click', () => { points.definitionExpression = "type = 'Indoor'"; });
+    $('#chkUtility').on('click', () => { points.definitionExpression = "type = 'Utility'"; });
+    $('#chkUnder').on('click', () => { points.definitionExpression = "type = 'Underground'"; });
+    $('#chkPano').on('click', () => { points.definitionExpression = "type = 'Panoramic'"; });
+    $('#chkIoT').on('click', () => { points.definitionExpression = "type = 'IoT'"; });
+    $('#chkOIC').on('click', () => { points.definitionExpression = "type = 'OIC'"; });
 
 
     $('#chkhava').on('click', () => { $('#weatherBox').hide(); showWeatherInPosition(view.camera.position); });
@@ -655,14 +608,6 @@ function setActiveWidget(type) {
 
             view.ui.add(activeWidget, "top-right");
             setActiveButton(document.getElementById("btnWeather"));
-            break;
-
-        case "legend":
-            activeWidget = new Legend({
-                view: view,              
-            });
-            view.ui.add(activeWidget, "bottom-right");
-            setActiveButton(document.getElementById("btnLegend"));
             break;
 
         case "slice":
